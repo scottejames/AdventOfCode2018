@@ -10,4 +10,13 @@ public abstract class AocDay {
         List<String> items = fh.getFileAsList();
         return items;
     }
+
+    public String reverse(String input){
+
+        StringBuilder output = new StringBuilder();
+        output.append(input);
+        output = output.reverse();
+
+        return output.toString();
+    }
 }
