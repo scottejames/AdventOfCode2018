@@ -5,7 +5,7 @@ import com.scottejames.aoc2018.*;
 public class Runner {
     public static void main (String [] args){
 
-        AocDay day = new Day5Reduction();
+        AocDay day = new Day6Chronal();
         day.runDay();
     }
 }
