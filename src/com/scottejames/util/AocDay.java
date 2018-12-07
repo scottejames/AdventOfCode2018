@@ -19,4 +19,18 @@ public abstract class AocDay {
 
         return output.toString();
     }
+
+    public static int charToInt(char c,boolean ignoreCase){
+        if (ignoreCase == true)
+            c= Character.toLowerCase(c);
+        return c-'a'+1;
+
+    }
+
+    public static void main(String [] args){
+
+        System.out.println(charToInt('a',true) + " " + charToInt('z',true));
+        System.out.println(charToInt('A',true) + " " + charToInt('Z',true));
+
+    }
 }
