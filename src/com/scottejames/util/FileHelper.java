@@ -29,6 +29,17 @@ public class FileHelper {
         return fileData;
     }
 
+    public List<Integer> splitStringArrayToInteger(){
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+        String[] items = fileData.get(0).split(" ");
+        for(String item: items){
+            result.add(Integer.parseInt(item));
+        }
+        return result;
+
+    }
     public List<String[]> getFileLinesSplit(String delimiter) {
         List<String[]> result = new ArrayList<>();
 
@@ -48,5 +59,6 @@ public class FileHelper {
         return result;
 
     }
+
 
 }
