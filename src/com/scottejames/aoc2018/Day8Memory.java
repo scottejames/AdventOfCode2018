@@ -15,7 +15,9 @@ public class Day8Memory extends AocDay{
         List<Integer> items = fh.splitStringArrayToInteger();
         buildTree(0, root, items);
         System.out.println(root);
-        System.out.println(root.getMetaDataSum());
+//        System.out.println(root.getMetaDataSum());
+        System.out.println(root.getMetaDataValue());
+
 
     }
 
@@ -29,23 +31,24 @@ public class Day8Memory extends AocDay{
         }
         int total = 0;
         for (int i = 0; i < metaData; i++) {
-            total += data.get(index + i);
+            current.addMetaData(data.get(index + i));
         }
-        current.incrMeta(total);
         return index + metaData;
 
     }
     private class Node {
 
         List<Node> children = new ArrayList<>();
-        int metaData = 0;
+        List<Integer> metaData = new ArrayList<>();
 
         public Node(){
             this.metaData = metaData;
         }
-        public void incrMeta(int meta){
-            metaData += meta;
+
+        public void addMetaData(int meta){
+            metaData.add(meta);
         }
+
         public void addChild(Node child){
             children.add(child);
         }
@@ -59,9 +62,36 @@ public class Day8Memory extends AocDay{
             return sb.toString();
         }
 
+        public int getMetaDataValue(){
+            int total = 0;
+
+            if (children.size() == 0) {
+                for (Integer i:metaData){
+                    total+=i;
+                }
+//                System.out.println("Adding sum " + total);
+
+
+            } else {
+//                System.out.println(children);
+                for (Integer i: metaData){
+//                    System.out.println("Adding meta id " + i + " out of size " + children.size());
+                    if (i <=children.size())
+                        total+=children.get(i-1).getMetaDataValue();
+                }
+//                System.out.println("Adding children " + total);
+            }
+
+            return total;
+
+        }
+
         public int getMetaDataSum() {
             int total = 0;
-            total += metaData;
+
+            for (Integer i:metaData){
+                total+=i;
+            }
             for (Node child : children) {
                 total += child.getMetaDataSum();
             }
