@@ -1,33 +1,41 @@
 package com.scottejames.util;
 
 public class Point {
-    int x;
-    int y;
+    IntPair origin;
+    IntPair velocity;
 
-    public int getX() {
-        return x;
+    public Point(IntPair o, IntPair v){
+        this.origin = o;
+        this.velocity = v;
+    }
+    public IntPair getOrigin(){
+        return origin;
+
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public IntPair getVelocity(){
+        return velocity;
     }
 
-    public int getY() {
-        return y;
+    public void move(){
+        origin.add(velocity);
     }
 
-    public void setY(int y) {
-        this.y = y;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Point point = (Point) o;
+
+        if (origin != null ? !origin.equals(point.origin) : point.origin != null) return false;
+        return velocity != null ? velocity.equals(point.velocity) : point.velocity == null;
     }
 
-    public Point(int x, int y) {
-
-        this.x = x;
-        this.y = y;
-    }
-    public Point(String s) {
-        String [] parts = s.split(",");
-        x = Integer.parseInt(parts[0]);
-        y = Integer.parseInt(parts[1].replace(" ",""));
+    @Override
+    public int hashCode() {
+        int result = origin != null ? origin.hashCode() : 0;
+        result = 31 * result + (velocity != null ? velocity.hashCode() : 0);
+        return result;
     }
 }

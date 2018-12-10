@@ -10,6 +10,12 @@ public abstract class AocDay {
         List<String> items = fh.getFileAsList();
         return items;
     }
+    public String getDataFromFileAsString(String fileName){
+        FileHelper fh = new FileHelper(fileName);
+        String items = fh.getFileAsString();
+        return items;
+    }
+
 
     public String reverse(String input){
 

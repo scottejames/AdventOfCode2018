@@ -28,7 +28,7 @@ public class FileHelper {
     public List<String> getFileAsList() {
         return fileData;
     }
-
+    public String getFileAsString() { return fileData.get(0);}
     public List<Integer> splitStringArrayToInteger(){
 
         ArrayList<Integer> result = new ArrayList<>();

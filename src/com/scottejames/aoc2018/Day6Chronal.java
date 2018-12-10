@@ -1,7 +1,7 @@
 package com.scottejames.aoc2018;
 
 import com.scottejames.util.AocDay;
-import com.scottejames.util.Point;
+import com.scottejames.util.IntPair;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,19 +11,19 @@ public class Day6Chronal extends AocDay{
     public void runDay() {
         List<String> items = getDataFromFile("2018/DaySix_data.txt");
 
-        HashMap<Integer, Point> points = new HashMap<>();
+        HashMap<Integer, IntPair> points = new HashMap<>();
 
         int width = 0;
         int height = 0;
         int numberOfPoints = 0;
         for (String item : items) {
-            Point point = new Point(item);
-            points.put(numberOfPoints, point);
+            IntPair intPair = new IntPair(item);
+            points.put(numberOfPoints, intPair);
 
-            if (point.getX() > width)
-                width = point.getX();
-            if (point.getY() > height)
-                height = point.getY();
+            if (intPair.getX() > width)
+                width = intPair.getX();
+            if (intPair.getY() > height)
+                height = intPair.getY();
             numberOfPoints++;
         }
         int[][] grid = new int[width + 1][height + 1];
@@ -34,7 +34,7 @@ public class Day6Chronal extends AocDay{
                 int closest = Integer.MAX_VALUE;
                 int bestPointId = -99;
                 for (int i = 0; i < numberOfPoints; i++) {
-                    Point p = points.get(i);
+                    IntPair p = points.get(i);
                     int dist = Math.abs(x - p.getX()) + Math.abs(y - p.getY());
                     if (dist < closest) {
                         closest = dist;
@@ -88,7 +88,7 @@ public class Day6Chronal extends AocDay{
 
                 int size = 0;
                 for (int i = 0; i < numberOfPoints; i++) {
-                    Point p = points.get(i);
+                    IntPair p = points.get(i);
                     int distance = Math.abs(x - p.getX()) + Math.abs(y - p.getY());
                     size += distance;
                 }
