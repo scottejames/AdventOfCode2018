@@ -1,8 +1,8 @@
 package com.scottejames.util;
 
 public class IntPair {
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     public int getX() {
         return x;
@@ -33,6 +33,14 @@ public class IntPair {
 //        System.out.println("Is: " + this.x );
 //        System.out.println("Is: " + this.y );
 
+    }
+
+    @Override
+    public String toString() {
+        return "IntPair{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 
     @Override
