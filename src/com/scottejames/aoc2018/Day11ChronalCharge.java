@@ -21,21 +21,18 @@ public class Day11ChronalCharge  extends AocDay{
             }
         }
             for (int size = 1; size <= 300; size++) {
-
-                System.out.println("size : " + size);
-            for (int x = 1 ; x <= 300 - size ; x++) {
-                for (int y = 1; y <= 300 - size; y++) {
-
-                    int value = evaluateGrid(x, y, size,powerLevels);
-
-                    if (value > maxValue) {
-                        maxValue = value;
-                        maxX = x;
-                        maxY = y;
-                        maxSize = size;
+                System.out.println("size : " + size);{
+                for (int x = 1 ; x <= 300 - size ; x++) {
+                    for (int y = 1; y <= 300 - size; y++) {
+                        int value = evaluateGrid(x, y, size, powerLevels);
+                        if (value > maxValue) {
+                            maxValue = value;
+                            maxX = x;
+                            maxY = y;
+                            maxSize = size;
+                        }
                     }
                 }
-//            }
             }
         }
 
@@ -43,7 +40,6 @@ public class Day11ChronalCharge  extends AocDay{
         System.out.println(" Result = (MaxValue = " +maxValue + ") " + maxX + ", " + maxY + ", " + maxSize);
     }
     public int evaluateGrid(int x, int y,int size, int [][] powerLevels){
-
 
         int result = 0;
         for (int i = 0; i < size -1; i++)
