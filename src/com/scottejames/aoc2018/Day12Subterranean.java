@@ -5,21 +5,29 @@ import com.scottejames.util.AocDay;
 import java.util.*;
 
 public class Day12Subterranean extends AocDay{
-    public int itter = 20;
+    public int itter = 5000;
     public HashSet<String> rules = new HashSet<>();
-    public String input = "#..#.#..##......###...###...........";
-    //public String input = "##.#..########..##..#..##.....##..###.####.###.##.###...###.##..#.##...#.#.#...###..###.###.#.#";
+   /// public String input = "#..#.#..##......###...###...........";
+    public String input = "##.#..########..##..#..##.....##..###.####.###.##.###...###.##..#.##...#.#.#...###..###.###.#.#";
     int zero=0;
     @Override
     public void runDay() {
         System.out.println(input);
 
 
+            int sum = getSum();
+            System.out.println(itter +" " +sum);
+
+
+    }
+
+
+    private int getSum() {
         for (int i = 0; i < itter; i++) {
 
             String current = "....." + input + "...";
 
-            List<String> items = this.getDataFromFile("2018/DayTwelve_test.txt");
+            List<String> items = this.getDataFromFile("2018/DayTwelve_data.txt");
             for (String item : items) {
                 String[] split = item.split(" ");
                 if (split[2].startsWith("#")) {
@@ -36,10 +44,7 @@ public class Day12Subterranean extends AocDay{
                     next += ".";
 
             }
-            // remove redundant
-            //next = next.replaceAll("^\\.+","");
 
-            System.out.println(next);
             input = next;
         }
         int sum = 0;
@@ -49,7 +54,6 @@ public class Day12Subterranean extends AocDay{
             }
 
         }
-        System.out.println("Part  1: " + sum);
-
+        return sum;
     }
 }
