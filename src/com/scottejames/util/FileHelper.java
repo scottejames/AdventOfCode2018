@@ -60,5 +60,14 @@ public class FileHelper {
 
     }
 
+    public static int getMaxLength(List<String> input){
+        int maxLength = 0;
+        for (String item:input){
+            if (item.length() > maxLength)
+                maxLength = item.length();
+        }
+        return maxLength;
+    }
+
 
 }

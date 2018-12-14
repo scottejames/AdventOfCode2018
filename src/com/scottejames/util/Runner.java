@@ -8,7 +8,7 @@ import com.scottejames.aoc2018.*;
 public class Runner {
     public static void main (String [] args){
 
-        AocDay day = new Day12Subterranean();
+        AocDay day = new Day14ChocCharts();
         day.runDay();
     }
 }
