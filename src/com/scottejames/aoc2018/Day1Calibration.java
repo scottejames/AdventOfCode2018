@@ -10,7 +10,7 @@ public class Day1Calibration extends AocDay {
 
     public void runDay(){
         HashMap<Double,Integer> frequencyCount = new HashMap<>();
-        String fileName = "2018/DayOne_data.txt";
+        String fileName = "2018/DayOne_alex_data.txt";
         FileHelper fh = new FileHelper(fileName);
         List<String> items = fh.getFileAsList();
         double result = 0;

@@ -1,19 +1,17 @@
 package com.scottejames.util;
 
+@SuppressWarnings("Duplicates")
 public enum Turn {
     LEFT, STRAIGHT, RIGHT;
 
-    public Direction getNewDir(Direction dir) {
-        if(this == Turn.STRAIGHT) {
-            return dir;
-        }else if(this == Turn.LEFT) {
-            return dir.turnLeft();
-        }else {
-            return dir.turnRight();
-        }
-    }
 
     public Turn nextTurn() {
-        return Turn.values()[(this.ordinal() + 1)% Turn.values().length];
+        switch (this) {
+            case LEFT: return STRAIGHT;
+            case STRAIGHT: return RIGHT;
+            case RIGHT: return LEFT;
+        }
+        throw new RuntimeException();
     }
+
 }

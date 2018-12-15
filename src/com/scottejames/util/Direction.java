@@ -2,64 +2,72 @@ package com.scottejames.util;
 
 import java.sql.Driver;
 
+@SuppressWarnings("Duplicates")
 public enum Direction {
-    NORTH, EAST, SOUTH, WEST;
+    UP(0, -1), DOWN(0, 1), LEFT(-1, 0), RIGHT(1, 0);
 
-    public Direction turnRight() {
-        return Direction.values()[(this.ordinal() + 1 )% Direction.values().length];
+    final int dx;
+    final int dy;
+
+    Direction(final int dx, final int dy) {
+        this.dx = dx;
+        this.dy = dy;
     }
 
-    public Direction turnLeft() {
-        return Direction.values()[(this.ordinal() + 3 )% Direction.values().length];
-    }
-
-    public Point move(Point p) {
-        switch(this) {
-            case NORTH:
-                p.goNorth();
-                break;
-            case SOUTH:
-                p.goSouth();
-                break;
-            case EAST:
-                p.goEast();
-                break;
-            case WEST:
-                p.goWest();
-                break;
-        }
-        return p;
-    }
     public static Direction getDirectionFromChar(char c){
         Direction dir = null;
         switch(c) {
             case '^':
-                dir = Direction.NORTH;
+                dir = Direction.UP;
                 break;
             case '>':
-                dir = Direction.EAST;
+                dir = Direction.RIGHT;
                 break;
             case 'v':
-                dir = Direction.SOUTH;
+                dir = Direction.DOWN;
                 break;
             case '<':
-                dir = Direction.WEST;
+                dir = Direction.LEFT;
                 break;
         }
         return dir;
     }
 
-    public char getDirectionChar() {
-        switch(this) {
-            case NORTH:
-                return '^';
-            case SOUTH:
-                return 'v';
-            case EAST:
-                return '>';
-            case WEST:
-                return '<';
+    public Direction turn(final Turn turn) {
+        switch (this) {
+            case UP:
+                switch (turn) {
+                    case LEFT: return LEFT;
+                    case STRAIGHT: return UP;
+                    case RIGHT: return RIGHT;
+                }
+            case DOWN:
+                switch (turn) {
+                    case LEFT: return RIGHT;
+                    case STRAIGHT: return DOWN;
+                    case RIGHT: return LEFT;
+                }
+            case LEFT:
+                switch (turn) {
+                    case LEFT: return DOWN;
+                    case STRAIGHT: return LEFT;
+                    case RIGHT: return UP;
+                }
+            case RIGHT:
+                switch (turn) {
+                    case LEFT: return UP;
+                    case STRAIGHT: return RIGHT;
+                    case RIGHT: return DOWN;
+                }
         }
-        return '#';//should never be hit
+        throw new RuntimeException();
+    }
+
+    public int getDx() {
+        return dx;
+    }
+
+    public int getDy() {
+        return dy;
     }
 }

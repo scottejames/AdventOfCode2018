@@ -5,7 +5,7 @@ import com.scottejames.util.AocDay;
 public class Day14ChocCharts extends AocDay{
     @Override
     public void runDay() {
-        int tgt = 598701;
+        int tgt = 170641;
 
         String str = makeRecipies(30_000_000);
         System.out.println(str.substring(tgt,tgt+10));
@@ -54,7 +54,7 @@ public class Day14ChocCharts extends AocDay{
         while (sb.length() < tgt) {
             int sum = firstElfScore + secondElfScore;
             sb.append(sum);
-            
+
             firstElfLocation = (firstElfLocation + 1 + firstElfScore) %sb.length();
             secondElfLocation = (secondElfLocation + 1 + secondElfScore) %sb.length();
 
