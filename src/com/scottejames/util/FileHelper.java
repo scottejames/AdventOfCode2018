@@ -59,7 +59,13 @@ public class FileHelper {
         return result;
 
     }
-
+    public static int[] StringArrayToInt(String [] array){
+        int [] result = new int[array.length];
+        for (int i = 0 ; i < array.length; i++){
+            result[i] = Integer.parseInt(array[i]);
+        }
+        return result;
+    }
     public static int getMaxLength(List<String> input){
         int maxLength = 0;
         for (String item:input){
