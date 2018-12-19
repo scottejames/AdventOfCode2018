@@ -18,7 +18,7 @@ import java.util.HashSet;
 public class Runner {
     public static void main(String[] args) {
 
-        AocDay day = new Day19GoWithFlow();
+        AocDay day = new Day17Settlers();
         day.runDay();
 
 
